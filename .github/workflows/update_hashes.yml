@@ -2,8 +2,8 @@ name: Update Hashes
 
 on:
   schedule:
-    - cron: '* * * * *'  # Runs the script every minute
-  workflow_dispatch:  # Allows manual triggering of the workflow
+    - cron: '0 * * * *'  # Runs the script every hour (adjust as needed)
+  workflow_dispatch:  # Allows manual triggering
 
 jobs:
   update_hashes:
