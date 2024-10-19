@@ -1,0 +1,26 @@
+name: Update Hashes
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # Runs the script every hour (you can adjust the schedule)
+  workflow_dispatch:  # Allows manual triggering of the workflow
+
+jobs:
+  update_hashes:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Git
+      run: |
+        git config --global user.name 'github-actions'
+        git config --global user.email 'github-actions@github.com'
+
+    - name: Run hash fetch script
+      run: ./scripts/fetch_hashes.sh
+
+    - name: Push changes
+      run: |
+        git push
